@@ -1,0 +1,1148 @@
+[
+    {
+        "id": "0e7cb71fe1095ccb",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a043e322ef44c7ae",
+        "type": "mqtt out",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-ADJUSTMENTS_MINA",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2e76f813d5b7439c",
+        "x": 1380,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "70236a098ab2bd40",
+        "type": "ui_slider",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "label": "Minimum angle",
+        "tooltip": "",
+        "group": "b048b3ab6456ecc3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "0",
+        "max": "120",
+        "step": 1,
+        "className": "",
+        "x": 1080,
+        "y": 80,
+        "wires": [
+            [
+                "a043e322ef44c7ae"
+            ]
+        ]
+    },
+    {
+        "id": "3be3fd30b0a53394",
+        "type": "ui_slider",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "label": "Controlling Factor",
+        "tooltip": "",
+        "group": "b048b3ab6456ecc3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": "0",
+        "max": "1",
+        "step": "0.01",
+        "className": "",
+        "x": 1090,
+        "y": 140,
+        "wires": [
+            [
+                "3f52ef0848c62c1b"
+            ]
+        ]
+    },
+    {
+        "id": "3f52ef0848c62c1b",
+        "type": "mqtt out",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-ADJUSTMENTS_CF",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2e76f813d5b7439c",
+        "x": 1340,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "60d75d2d046ed79b",
+        "type": "mqtt in",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-TEMP",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2e76f813d5b7439c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 170,
+        "y": 60,
+        "wires": [
+            [
+                "97289042b08b15e8",
+                "f66018b6e62cc649"
+            ]
+        ]
+    },
+    {
+        "id": "97289042b08b15e8",
+        "type": "ui_gauge",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "group": "c4ee2f8a96497598",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temp Gauge",
+        "label": "Celcius",
+        "format": "{{payload}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 510,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "f66018b6e62cc649",
+        "type": "ui_chart",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "group": "c4ee2f8a96497598",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Temp Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-40",
+        "ymax": "80",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 510,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e5543e69415eac88",
+        "type": "ui_switch",
+        "z": "0e7cb71fe1095ccb",
+        "name": "Schedule Switch",
+        "label": "switch schedule",
+        "tooltip": "",
+        "group": "7f0787a91660d1d2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 180,
+        "y": 400,
+        "wires": [
+            [
+                "678987054229842b"
+            ]
+        ]
+    },
+    {
+        "id": "678987054229842b",
+        "type": "change",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "isScheduled",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 460,
+        "wires": [
+            [
+                "d3e2c2801cfa5903"
+            ]
+        ]
+    },
+    {
+        "id": "b8f516af1f8194c6",
+        "type": "ui_date_picker",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "label": "Date",
+        "group": "7f0787a91660d1d2",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 150,
+        "y": 520,
+        "wires": [
+            [
+                "f44fc2ea14c721bd"
+            ]
+        ]
+    },
+    {
+        "id": "b5d6ba52e3924010",
+        "type": "ui_text_input",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "label": "Input Time",
+        "tooltip": "",
+        "group": "7f0787a91660d1d2",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "time",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 130,
+        "y": 560,
+        "wires": [
+            [
+                "db75bc34b55d66af"
+            ]
+        ]
+    },
+    {
+        "id": "f44fc2ea14c721bd",
+        "type": "change",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "scheduleDate",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 520,
+        "wires": [
+            [
+                "d3e2c2801cfa5903"
+            ]
+        ]
+    },
+    {
+        "id": "db75bc34b55d66af",
+        "type": "change",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "scheduleTime",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 350,
+        "y": 560,
+        "wires": [
+            [
+                "d3e2c2801cfa5903"
+            ]
+        ]
+    },
+    {
+        "id": "d3e2c2801cfa5903",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 1",
+        "func": "let isScheduled = global.get(\"isScheduled\");\nlet scheduleDate = global.get(\"scheduleDate\");\nlet scheduleTime = global.get(\"scheduleTime\");\n\nif (isScheduled && scheduleDate && scheduleTime){\n    let schedule = scheduleDate + scheduleTime;\n\n    if (Date.now() > schedule){\n        return {\n            payload : \"OLDER DATE\"\n        }\n\n    }else {\n        return {\n            payload: schedule\n        }\n    }\n}else if (isScheduled === false){\n    return {\n        payload: \"NOT SCHEDULED\"\n    }\n}else {\n    return {\n        payload: null\n    }\n}",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 460,
+        "wires": [
+            [
+                "a427e86ae047a503"
+            ]
+        ]
+    },
+    {
+        "id": "a427e86ae047a503",
+        "type": "switch",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "NOT SCHEDULED",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OLDER",
+                "vt": "str"
+            },
+            {
+                "t": "nnull"
+            },
+            {
+                "t": "null"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 4,
+        "x": 790,
+        "y": 460,
+        "wires": [
+            [
+                "c259e95dcbf4c755"
+            ],
+            [
+                "1c9b55e584d3acc0"
+            ],
+            [
+                "403ddd2d7ed220a4"
+            ],
+            [
+                "1a038ad553eb84a8"
+            ]
+        ]
+    },
+    {
+        "id": "c259e95dcbf4c755",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 2",
+        "func": "\nreturn {\n    payload : \"NOT\"\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 380,
+        "wires": [
+            [
+                "0e63f69df0a38c9e"
+            ]
+        ]
+    },
+    {
+        "id": "403ddd2d7ed220a4",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 3",
+        "func": "\nreturn {\n    payload : Math.round(msg.payload/1000)\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 500,
+        "wires": [
+            [
+                "0e63f69df0a38c9e"
+            ]
+        ]
+    },
+    {
+        "id": "1c9b55e584d3acc0",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 4",
+        "func": "\nreturn{\n    payload: \"Please enter a future time\"\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 440,
+        "wires": [
+            [
+                "8eb5302959ca2076"
+            ]
+        ]
+    },
+    {
+        "id": "8eb5302959ca2076",
+        "type": "ui_toast",
+        "z": "0e7cb71fe1095ccb",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1270,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1a038ad553eb84a8",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 5",
+        "func": "\nreturn {\n    payload : \"Please enter a valid date and time\"\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 560,
+        "wires": [
+            [
+                "8eb5302959ca2076"
+            ]
+        ]
+    },
+    {
+        "id": "0e63f69df0a38c9e",
+        "type": "mqtt out",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-SCH-OFF-ESP",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2e76f813d5b7439c",
+        "x": 1290,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e45bba0a62e9d47d",
+        "type": "mqtt in",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-SCH-ON",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2e76f813d5b7439c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 180,
+        "y": 240,
+        "wires": [
+            [
+                "e72cb980c22883cd"
+            ]
+        ]
+    },
+    {
+        "id": "e72cb980c22883cd",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 6",
+        "func": "\nreturn {\n    payload: msg.payload === 1\n};",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 160,
+        "y": 320,
+        "wires": [
+            [
+                "e5543e69415eac88"
+            ]
+        ]
+    },
+    {
+        "id": "c2e7c661a0947f30",
+        "type": "mqtt in",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-LIGHT-R",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "db21fb23a29d9642",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 740,
+        "wires": [
+            [
+                "f3800a99ebce4b42"
+            ]
+        ]
+    },
+    {
+        "id": "4782f35d155154b3",
+        "type": "mqtt in",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-LIGHT-L",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "db21fb23a29d9642",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 90,
+        "y": 840,
+        "wires": [
+            [
+                "75086688d4543261"
+            ]
+        ]
+    },
+    {
+        "id": "18187fa8ec3007a3",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "Right",
+        "func": "return {\n    payload: msg.payload,\n    topic: \"Right\"\n};\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 740,
+        "wires": [
+            [
+                "68f5700e2cd083bb",
+                "4be5dbcf40a3b45a"
+            ]
+        ]
+    },
+    {
+        "id": "df5e0eede0ffc290",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "Left",
+        "func": "return {\n    payload: msg.payload,\n    topic: \"Left\"\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 450,
+        "y": 840,
+        "wires": [
+            [
+                "3eb6f31170ecf91a",
+                "68f5700e2cd083bb"
+            ]
+        ]
+    },
+    {
+        "id": "68f5700e2cd083bb",
+        "type": "ui_chart",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "group": "ae9213057c85cd36",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Light intensity Chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 740,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4be5dbcf40a3b45a",
+        "type": "change",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "right_LDR",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 840,
+        "wires": [
+            [
+                "76fd5ebfc91a6760"
+            ]
+        ]
+    },
+    {
+        "id": "3eb6f31170ecf91a",
+        "type": "change",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "left_LDR",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 710,
+        "y": 900,
+        "wires": [
+            [
+                "76fd5ebfc91a6760"
+            ]
+        ]
+    },
+    {
+        "id": "76fd5ebfc91a6760",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 10",
+        "func": "let right_LDR = global.get(\"right_LDR\");\nlet left_LDR = global.get(\"left_LDR\");\nlet max = right_LDR;\n\nif(left_LDR>max){\n    max=left_LDR;\n}\n\nreturn{\n    payload:max\n};",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 970,
+        "y": 860,
+        "wires": [
+            [
+                "c72b95c7c75262d9"
+            ]
+        ]
+    },
+    {
+        "id": "c72b95c7c75262d9",
+        "type": "ui_gauge",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "group": "ae9213057c85cd36",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Max Light Intensity",
+        "label": "units",
+        "format": "{{payload}}",
+        "min": 0,
+        "max": "1",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1210,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "f1ff8c163b2f4d9b",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 11",
+        "func": "if(msg.payload == \"paracetamol\"){\n    return{payload:50};\n}else if (msg.payload==\"Amoxicilin\"){\n    return{payload:70};\n}else if(msg.payload==\"Metformin\"){\n    return{payload:120};\n}else{\n    return{payload:30};\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 80,
+        "wires": [
+            [
+                "70236a098ab2bd40"
+            ]
+        ]
+    },
+    {
+        "id": "e7cd5315ccf0630e",
+        "type": "function",
+        "z": "0e7cb71fe1095ccb",
+        "name": "function 12",
+        "func": "if (msg.payload == \"paracetamol\") {\n    return { payload: 0.25 };\n} else if (msg.payload == \"Amoxicilin\") {\n    return { payload: 0.5 };\n} else if (msg.payload == \"Metformin\") {\n    return { payload: 0.75 };\n} else {\n    return { payload: 1 };\n}",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 890,
+        "y": 140,
+        "wires": [
+            [
+                "3be3fd30b0a53394"
+            ]
+        ]
+    },
+    {
+        "id": "8da52a92550d92bc",
+        "type": "ui_dropdown",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "label": "Medi List",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "b048b3ab6456ecc3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Default",
+                "value": "Default",
+                "type": "str"
+            },
+            {
+                "label": "Paracetamol",
+                "value": "Paracetamol",
+                "type": "str"
+            },
+            {
+                "label": "Amoxicilin",
+                "value": "Amoxicilin",
+                "type": "str"
+            },
+            {
+                "label": "Citalopram",
+                "value": "Citalopram",
+                "type": "str"
+            },
+            {
+                "label": "Metformin",
+                "value": "Metformin",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 720,
+        "y": 100,
+        "wires": [
+            [
+                "f1ff8c163b2f4d9b",
+                "e7cd5315ccf0630e"
+            ]
+        ]
+    },
+    {
+        "id": "f3800a99ebce4b42",
+        "type": "delay",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 290,
+        "y": 740,
+        "wires": [
+            [
+                "18187fa8ec3007a3"
+            ]
+        ]
+    },
+    {
+        "id": "75086688d4543261",
+        "type": "delay",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "5",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 290,
+        "y": 840,
+        "wires": [
+            [
+                "df5e0eede0ffc290"
+            ]
+        ]
+    },
+    {
+        "id": "6e95cb01c3b497a8",
+        "type": "ui_switch",
+        "z": "0e7cb71fe1095ccb",
+        "name": "Main switch",
+        "label": "Main switch",
+        "tooltip": "",
+        "group": "33f5df8461b87b2c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 790,
+        "y": 260,
+        "wires": [
+            [
+                "be880ff4c8eff3e9"
+            ]
+        ]
+    },
+    {
+        "id": "be880ff4c8eff3e9",
+        "type": "mqtt out",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-SCH-OFF-ESP",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2e76f813d5b7439c",
+        "x": 1020,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "14d4aa4652c4c58a",
+        "type": "mqtt in",
+        "z": "0e7cb71fe1095ccb",
+        "name": "",
+        "topic": "MED-SCH-OFF-ESP",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2e76f813d5b7439c",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 580,
+        "y": 260,
+        "wires": [
+            [
+                "6e95cb01c3b497a8"
+            ]
+        ]
+    },
+    {
+        "id": "2e76f813d5b7439c",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b048b3ab6456ecc3",
+        "type": "ui_group",
+        "name": "Shade Controller",
+        "tab": "f46663fac286bf16",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c4ee2f8a96497598",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "f46663fac286bf16",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7f0787a91660d1d2",
+        "type": "ui_group",
+        "name": "Schedule",
+        "tab": "f46663fac286bf16",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "db21fb23a29d9642",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Server",
+        "broker": "https://test.mosquitto.org/",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "ae9213057c85cd36",
+        "type": "ui_group",
+        "name": "Light Intensity",
+        "tab": "f46663fac286bf16",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "33f5df8461b87b2c",
+        "type": "ui_group",
+        "name": "Switch",
+        "tab": "f46663fac286bf16",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f46663fac286bf16",
+        "type": "ui_tab",
+        "name": "MediBox",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
